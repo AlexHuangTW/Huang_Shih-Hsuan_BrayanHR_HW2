@@ -1,1 +1,47 @@
 @use '../abstracts' as a;
+
+main {
+    height: auto;
+}
+
+.main-title-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    margin: 20px;
+    font-family: a.$body-font;
+}
+
+.instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    font-size: 5rem;
+}
+
+.character {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    margin: .625rem;
+    padding: 30px;
+
+    background-color: a.$body-text-color;
+    border-radius: 5px;
+}
+
+.character img {
+    height: 100%;
+    width: 80%;
+}
+
+.zoom:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
