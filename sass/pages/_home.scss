@@ -9,9 +9,15 @@ main {
     justify-content: center;
     align-items: center;
 
-    font-size: 2rem;
     margin: 20px;
-    font-family: a.$body-font;
+}
+
+.main-title-con h2 {
+
+    font-size: 4rem; 
+    font-weight: bold;
+    color: #FED43B;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .minions-logo {
@@ -24,25 +30,42 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
     font-size: 2rem;
+}
+
+.instructions p {
+    margin: 0;
+}
+
+.character-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 .character {
     display: flex;
     justify-content: center;
     align-items: center;
+    // width: 400px;
     height: 500px;
     margin: .625rem;
     padding: 30px;
 
-    background-color: #6e9140;
+    // background-image: url('/images/character_bg.png');
+    // background-size: cover;
+    // background-color: a.$accent-color;
     border-radius: 5px;
 }
 
 .character img {
     height: 100%;
     width: 80%;
+    padding: 1em;
+
+    background-image: url('/images/character_bg.png');
+    background-size: cover;
 }
 
 .zoom {
@@ -57,13 +80,15 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-top: 70px;
 }
 
 .button-con a {
     padding: 10px 20px;
     font-size: 4rem; 
     color: white;  
-    background-color: #007BFF;
+    background-color: a.$accent-color;
     border: none;
     border-radius: 5px;  
     cursor: pointer;
@@ -71,11 +96,12 @@ main {
 }
 
 .button-con a:hover {
-    background-color: #0056b3;
+    background-color: #6e9140;
 }
 
 .character {
     position: relative;
+    margin: 1.5rem;
 }
 
 .character .name {
@@ -84,8 +110,8 @@ main {
     align-items: center;
 
     position: absolute;
-    width: 100%;
-    top: 96%;
+    width: 83%;
+    top: 110%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
@@ -93,7 +119,8 @@ main {
 
     font-size: 3rem;
     color: #fff;
-    background-color: a.$accent-color;
+    // background-color: a.$accent-color;
+    background-image: url('/images/character_bg.png');
 }
 
 .character:hover .name {
