@@ -14,12 +14,18 @@ main {
     font-family: a.$body-font;
 }
 
+.minions-logo {
+    width: 300px;
+    // background-color: a.$accent-color;
+    border-radius: 5px;
+}
+
 .instructions {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px;
-    font-size: 5rem;
+    font-size: 2rem;
 }
 
 .character {
@@ -30,7 +36,7 @@ main {
     margin: .625rem;
     padding: 30px;
 
-    background-color: a.$body-text-color;
+    background-color: #6e9140;
     border-radius: 5px;
 }
 
@@ -39,9 +45,57 @@ main {
     width: 80%;
 }
 
-.zoom:hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+.zoom {
+    transition: transform .2s; 
 }
 
+.zoom:hover {
+    transform: scale(1.15);
+}
+
+.button-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-con a {
+    padding: 10px 20px;
+    font-size: 4rem; 
+    color: white;  
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;  
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.button-con a:hover {
+    background-color: #0056b3;
+}
+
+.character {
+    position: relative;
+}
+
+.character .name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 100%;
+    top: 96%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity .3s;
+
+    font-size: 3rem;
+    color: #fff;
+    background-color: a.$accent-color;
+}
+
+.character:hover .name {
+    opacity: 1;
+}
