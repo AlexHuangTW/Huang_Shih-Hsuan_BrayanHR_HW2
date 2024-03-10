@@ -1,0 +1,29 @@
+@use '../abstracts' as a;
+
+.instructions-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+}
+
+.canvas-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    width: 90vw; 
+    height: 70vh;
+	border: 5px solid a.$secondary-color;
+    border-radius: 5px;
+    background-color: a.$accent-color;
+    background-image: url(/images/ground.png);
+    background-repeat: repeat;
+    // background-attachment: fixed;
+
+
+    margin: 0;
+}

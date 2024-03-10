@@ -12,7 +12,7 @@
     
     <script defer src="https://kit.fontawesome.com/0eab0f8aa6.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script defer src="js/main.js"></script>
+    <script defer src="js/game.js"></script>
 </head>
 <body>
     <h1 class="hidden">OOP JS -MODULES AND BUNDLING - HW2</h1>
@@ -24,28 +24,11 @@
         </section>
     </header>
     <main>
-        <div class="grid-con instructions">
-            <p class="col-span-full">Choose your Minion</p>
+        <div class="grid-con instructions-game">
+            <p class="col-span-full">Survive and find new minions to win</p>
         </div>
-        <section class="grid-con">
-            <div class="col-span-4 character">
-                <img class="zoom" src="images/minions/Stuart.svg" alt="Stuart">
-                <h2 class="name">Stuart</h2>
-            </div>
-            <div class="col-span-4 character">
-                <img class="zoom" src="images/minions/Kevin.svg" alt="Kevin">
-                <h2 class="name">Kevin</h2>
-            </div>
-            <div class="col-span-4 character">
-                <img class="zoom" src="images/minions/Bob.svg" alt="Bob">
-                <h2 class="name">Bob</h2>
-            </div>
-        </section>
-
-        <div class="grid-con button-con">
-            <a href="#" class="col-span-full start-button">
-                <h2>Start Game</h2>
-            </a>
+        <div class="canvas-con">
+            <canvas id="game-canvas"></canvas>
         </div>
     </main>
     <footer class="grid-con">
