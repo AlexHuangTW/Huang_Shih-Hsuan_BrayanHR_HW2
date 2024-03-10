@@ -21,11 +21,17 @@
 
 
     startButton.addEventListener('click', function() {
+        
         if (chosenCharacter === null) {
             // Show a message if no character is chosen
             const errorElement = document.createElement('h2');
             errorElement.textContent = 'Please choose one character before the game starts.';
             buttonCon.appendChild(errorElement);
+
+            setTimeout(function() {
+                errorElement.remove();
+            }, 1000);
+
         } else {
             startGame(chosenCharacter);
         }
