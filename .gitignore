@@ -1,2 +1,9 @@
-assets/
-js/modules/
+node_modules
+.DS_Store
+assets/.DS_Store
+images/.DS_Store
+js/.DS_Store
+css/.DS_Store
+sass/.DS_Store
+Archive.zip
+Archive 2.zip
