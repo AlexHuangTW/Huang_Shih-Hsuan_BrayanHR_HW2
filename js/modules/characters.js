@@ -1,8 +1,10 @@
 export function charactersSelect() {
+    gsap.registerPlugin(ScrollToPlugin);
+
     const buttonCon = document.querySelector('.button-con');
     const startButton = document.querySelector('.start-button');
     console.log(startButton);
-    const characters = document.querySelectorAll('.character');
+    const characters = document.querySelectorAll('.zoom');
 
     let chosenCharacter = null;
     let highlightedCharacter = null;
@@ -16,6 +18,8 @@ export function charactersSelect() {
             chosenCharacter = event.target;
             chosenCharacter.style.border = '5px solid #9a4e2c';
             highlightedCharacter = chosenCharacter;
+
+            gsap.to(window, {duration: 1, scrollTo: '#start-button-con'});
         });
     }
 
