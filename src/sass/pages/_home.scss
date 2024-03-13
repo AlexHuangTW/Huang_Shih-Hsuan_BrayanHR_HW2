@@ -64,7 +64,7 @@ main {
     width: 80%;
     padding: 1em;
 
-    background-image: url('/images/character_bg.png');
+    background-image: url('../images/character_bg.png');
     background-size: cover;
 }
 
@@ -128,7 +128,7 @@ main {
     font-size: 3rem;
     color: #fff;
     // background-color: a.$accent-color;
-    background-image: url('/images/character_bg.png');
+    background-image: url('../images/character_bg.png');
 }
 
 .character:hover .name {

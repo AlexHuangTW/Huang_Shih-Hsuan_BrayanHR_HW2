@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 .DS_Store
 assets/.DS_Store
 images/.DS_Store
