@@ -1,14 +1,15 @@
 export function playGame() {
     window.onload = function() {
-        const canvas = document.querySelector('#canvas');
+        const canvas = document.getElementById('canvas');
         if (!canvas) {
             console.error('Canvas not found!');
             return;
         }
+
         const ctx = canvas.getContext('2d');
         canvas.width = 400;
         canvas.height = 400;
-    
+
         const FR = 10;
         const S = 20;
         const T = canvas.width / S;
@@ -16,52 +17,84 @@ export function playGame() {
         let vel = { x: 0, y: 0 };
         let snake = [{ x: pos.x, y: pos.y }];
         let food = { x: Math.floor(Math.random() * T), y: Math.floor(Math.random() * T) };
-    
-        // Use localStorage to get the selected character image
+
+        let snakeImageSrc = localStorage.getItem('chosenCharacterSrc') || 'images/minions/Bob.svg';
+ 
+
         let snakeImage = new Image();
         let foodImage = new Image();
-        snakeImage.src = localStorage.getItem('chosenCharacter') || 'images/minions/Bob.svg';
+
         const foodImages = ['images/minions/Kevin.svg', 'images/minions/Stuart.svg', 'images/minions/Bob.svg'];
         foodImage.src = foodImages[Math.floor(Math.random() * foodImages.length)];
-    
+
+        snakeImage.onload = () => {
+            gameLoop();
+        };
+
+        snakeImage.onerror = () => {
+            console.error('Failed to load snake image');
+        };
+
+        // Ensures that the snake image is set last to start the game loop after the image is loaded
+        snakeImage.src = snakeImageSrc;
+
         function gameLoop() {
             if (vel.x || vel.y) {
-                // Calculate the new position of the snake head
                 let newHead = { x: snake[0].x + vel.x, y: snake[0].y + vel.y };
-    
-                // Detect game end conditions
+
                 if (newHead.x < 0 || newHead.x >= T || newHead.y < 0 || newHead.y >= T || snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)) {
-                    alert("Game Over!");
-                    document.location.reload();
+                    //Create a new div element
+                    const gameOverMessage = document.createElement('div');
+                    //Set the content of the div
+                    gameOverMessage.textContent = "Game Over!";
+                    // You can add some styles to make it more visible
+                    gameOverMessage.style.position = 'absolute';
+                    gameOverMessage.style.top = '50%';
+                    gameOverMessage.style.left = '50%';
+                    gameOverMessage.style.transform = 'translate(-50%, -50%)';
+                    gameOverMessage.style.fontSize = '24px';
+                    gameOverMessage.style.color = 'red';
+                    // Make sure the message is displayed at the top
+                    gameOverMessage.style.zIndex = '1000'; 
+                    gameOverMessage.style.backgroundColor = 'white';
+                    gameOverMessage.style.padding = '10px';
+                    gameOverMessage.style.borderRadius = '5px';
+            
+                    //Add it to body
+                    document.body.appendChild(gameOverMessage);
+            
+                    // To be able to restart the game, you can automatically refresh the page after a few seconds or add a button to refresh manually
+                    setTimeout(function() {
+                        document.location.reload();
+                    }, 3000); // Reload the page after 3 seconds
                     return;
                 }
-    
-                // if get food
+            
+
                 if (newHead.x === food.x && newHead.y === food.y) {
-                    snake.push({}); //Grow the snake body
-                    randomFood(); // Generate new food
+                    snake.push({});
+                    randomFood();
                 } else {
-                    snake.pop(); //Move the snake body
+                    snake.pop();
                 }
-    
+
                 snake.unshift(newHead);
             }
-    
-            //Draw the game screen
+
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             snake.forEach(segment => ctx.drawImage(snakeImage, segment.x * S, segment.y * S, S, S));
             ctx.drawImage(foodImage, food.x * S, food.y * S, S, S);
-    
+
             setTimeout(gameLoop, 1000 / FR);
         }
-    
+
         function randomFood() {
             food = { x: Math.floor(Math.random() * T), y: Math.floor(Math.random() * T) };
             foodImage.src = foodImages[Math.floor(Math.random() * foodImages.length)];
         }
-    
-        document.addEventListener('keydown', function(e) {
+
+        document.addEventListener('keydown', e => {
             switch (e.key) {
                 case 'ArrowUp': if (vel.y === 0) vel = { x: 0, y: -1 }; break;
                 case 'ArrowDown': if (vel.y === 0) vel = { x: 0, y: 1 }; break;
@@ -69,8 +102,5 @@ export function playGame() {
                 case 'ArrowRight': if (vel.x === 0) vel = { x: 1, y: 0 }; break;
             }
         });
-    
-        gameLoop();
     };
-    
 }
