@@ -7,47 +7,60 @@ export function playGame() {
         }
 
         const ctx = canvas.getContext('2d');
-        canvas.width = 400;
-        canvas.height = 400;
+
+        function resizeCanvas() {
+            if (window.innerWidth <= 500) {
+                canvas.width = 300;
+                canvas.height = 300;
+            } else {
+                canvas.width = 400;
+                canvas.height = 400;
+            }
+        }
+        // Call resizeCanvas when the script loads
+        resizeCanvas();
+        
+        window.addEventListener('resize', resizeCanvas);
 
         const FR = 10;
         const S = 20;
         const T = canvas.width / S;
         let pos = { x: 10, y: 10 };
         let vel = { x: 0, y: 0 };
-        let snake = [{ x: pos.x, y: pos.y }];
+        let minion = [{ x: pos.x, y: pos.y }];
         let food = { x: Math.floor(Math.random() * T), y: Math.floor(Math.random() * T) };
 
-        let snakeImageSrc = localStorage.getItem('chosenCharacterSrc') || 'images/minions/Bob.svg';
- 
+        let minionImageSrc = localStorage.getItem('chosenCharacterSrc') || 'images/minions/Bob.svg';
 
-        let snakeImage = new Image();
+
+        let minionImage = new Image();
         let foodImage = new Image();
 
         const foodImages = ['images/minions/Kevin.svg', 'images/minions/Stuart.svg', 'images/minions/Bob.svg'];
         foodImage.src = foodImages[Math.floor(Math.random() * foodImages.length)];
 
-        snakeImage.onload = () => {
+        minionImage.onload = () => {
+
             gameLoop();
         };
 
-        snakeImage.onerror = () => {
-            console.error('Failed to load snake image');
+        minionImage.onerror = () => {
+            console.error('Failed to load minion image');
         };
 
-        // Ensures that the snake image is set last to start the game loop after the image is loaded
-        snakeImage.src = snakeImageSrc;
+        // Ensures that the minion image is set last to start the game loop after the image is loaded
+        minionImage.src = minionImageSrc;
 
         function gameLoop() {
             if (vel.x || vel.y) {
-                let newHead = { x: snake[0].x + vel.x, y: snake[0].y + vel.y };
+                let newHead = { x: minion[0].x + vel.x, y: minion[0].y + vel.y };
 
-                if (newHead.x < 0 || newHead.x >= T || newHead.y < 0 || newHead.y >= T || snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)) {
+                if (newHead.x < 0 || newHead.x >= T || newHead.y < 0 || newHead.y >= T || minion.some(segment => segment.x === newHead.x && segment.y === newHead.y)) {
                     //Create a new div element
                     const gameOverMessage = document.createElement('div');
                     //Set the content of the div
                     gameOverMessage.textContent = "Game Over!";
-                    // You can add some styles to make it more visible
+
                     gameOverMessage.style.position = 'absolute';
                     gameOverMessage.style.top = '50%';
                     gameOverMessage.style.left = '50%';
@@ -72,18 +85,18 @@ export function playGame() {
             
 
                 if (newHead.x === food.x && newHead.y === food.y) {
-                    snake.push({});
+                    minion.push({});
                     randomFood();
                 } else {
-                    snake.pop();
+                    minion.pop();
                 }
 
-                snake.unshift(newHead);
+                minion.unshift(newHead);
             }
 
             ctx.fillStyle = 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            snake.forEach(segment => ctx.drawImage(snakeImage, segment.x * S, segment.y * S, S, S));
+            minion.forEach(segment => ctx.drawImage(minionImage, segment.x * S, segment.y * S, S, S));
             ctx.drawImage(foodImage, food.x * S, food.y * S, S, S);
 
             setTimeout(gameLoop, 1000 / FR);

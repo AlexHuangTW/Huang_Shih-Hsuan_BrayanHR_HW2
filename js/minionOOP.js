@@ -16,45 +16,42 @@ class Minion {
   
   class Stuart extends Minion {
     constructor() {
-      super("Stuart", "Strong", "Yellow", 15, "none");
-      this.imageSrc = 'images/minions/Stuart.svg'; //Add character image path
+        super("Stuart", "Strong", "Yellow", 15, "none");
+        this.imageSrc = 'images/minions/Stuart.svg';
+        this.weapon = "martial arts";
     }
-  
-    playGuitar() {
-      console.log(`${this.name} is playing the guitar!`);
+
+    attack() {
+        console.log(`Stuart attacks with ${this.weapon} moves!`);
+        return this.weapon;
     }
-    // Since Stuart does not have 'lead' or 'eat' behaviors, you can optionally define them here as empty for consistency
-    lead() {}
-    eat() {}
-  }
-  
-  class Kevin extends Minion {
+}
+
+class Kevin extends Minion {
     constructor() {
-      super("Kevin", "Fit", "Yellow", 20, "none");
-      this.imageSrc = 'images/minions/Kevin.svg'; //Add character image path
+        super("Kevin", "Fit", "Yellow", 20, "none");
+        this.imageSrc = 'images/minions/Kevin.svg';
+        this.weapon = "banana";
     }
-  
-    lead() {
-      console.log(`${this.name} is leading the group!`);
+
+    attack() {
+        console.log(`Kevin attacks with a ${this.weapon} throw!`);
+        return this.weapon;
     }
-    // Kevin does not have 'playGuitar' or 'eat' behaviors, define them if needed
-    playGuitar() {}
-    eat() {}
-  }
-  
-  class Bob extends Minion {
+}
+
+class Bob extends Minion {
     constructor() {
-      super("Bob", "Fat", "Yellow", 10, "Teddy Bear");
-      this.imageSrc = 'images/minions/Bob.svg'; //Add character image path
+        super("Bob", "Fat", "Yellow", 10, "Teddy Bear");
+        this.imageSrc = 'images/minions/Bob.svg';
+        this.weapon = "teddy bear";
     }
-  
-    eat() {
-      console.log(`${this.name} is eating food!`);
+
+    attack() {
+        console.log(`Bob attacks with ${this.weapon} cuddle!`);
+        return this.weapon;
     }
-    // Bob does not have 'playGuitar' or 'lead' behaviors, define them if needed
-    playGuitar() {}
-    lead() {}
-  }
+}
   
 
     
@@ -99,10 +96,18 @@ class Minion {
       });
   
       const startButton = document.querySelector('.start-button');
+      
       startButton.addEventListener('click', () => {
         if (!chosenCharacter) {
-          alert('Please choose one character before the game starts.');
+
+          startButton.innerHTML = 'Please choose one character before the game starts.';
+
+          setTimeout(() => {
+            startButton.innerHTML = 'Start Game';
+          }, 2000);
+
         } else {
+
           const characterName = chosenCharacter.dataset.name;
           this.startGame(this.minions[characterName]);
         }
@@ -113,9 +118,7 @@ class Minion {
         // Loop through the this.minions object and print the details of each minion
         Object.values(this.minions).forEach(minion => {
           console.log(minion); 
-          minion.playGuitar();
-          minion.lead();
-          minion.eat();
+          minion.attack();
         });
       }
 
@@ -128,6 +131,7 @@ class Minion {
         <p>Color: ${minion.color}</p>
         <p>Speed: ${minion.speed}</p>
         <p>Decoration: ${minion.decoration}</p>
+        <p>Attack: ${minion.attack()}</p>
       `;
     }
   
