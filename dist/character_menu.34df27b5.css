@@ -1,0 +1,198 @@
+@font-face {
+  font-family: pumpoptidemibold;
+  src: url("pumpopti-demibold-webfont.a4ce606b.woff2") format("woff2"), url("pumpopti-demibold-webfont.d20c589f.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: pumpoptimedium;
+  src: url("pumpopti-medium-webfont.2d643115.woff2") format("woff2"), url("pumpopti-medium-webfont.a10e10f5.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #f1c40e;
+  background-image: url("diagonal-stripes.1dbe3905.svg");
+}
+
+.back-to-top {
+  text-align: center;
+}
+
+.back-to-top a {
+  color: #000;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: pumpoptimedium, Helvetica, Arial;
+}
+
+h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: pumpoptidemibold, Helvetica, Arial;
+}
+
+a {
+  color: #fff;
+  font-family: pumpoptimedium, Helvetica, Arial;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+h2 {
+  font-family: pumpoptimedium, Helvetica, Arial;
+}
+
+main {
+  height: auto;
+}
+
+.main-title-con {
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  display: flex;
+}
+
+.main-title-con h2 {
+  color: #fed43b;
+  text-shadow: 2px 2px 4px #00000080;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.minions-logo {
+  border-radius: 5px;
+  width: 300px;
+}
+
+.instructions {
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  display: flex;
+}
+
+.instructions p {
+  margin: 0;
+}
+
+.character-con {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.character {
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  margin: .625rem;
+  padding: 30px;
+  display: flex;
+}
+
+.character img {
+  background-image: url("character_bg.673d2cd1.png");
+  background-size: cover;
+  width: 80%;
+  height: 100%;
+  padding: 1em;
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.15);
+}
+
+.zoom-logo {
+  transition: transform .2s;
+}
+
+.zoom-logo:hover {
+  transform: scale(1.15);
+}
+
+.button-con {
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  display: flex;
+}
+
+.button-con a {
+  color: #fff;
+  cursor: pointer;
+  background-color: #2880b9;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 3rem;
+  transition: background-color .3s;
+}
+
+.button-con a:hover {
+  background-color: #6e9140;
+}
+
+.character {
+  margin: 1.5rem;
+  position: relative;
+}
+
+.character .name {
+  opacity: 0;
+  color: #fff;
+  background-image: url("character_bg.673d2cd1.png");
+  justify-content: center;
+  align-items: center;
+  width: 83%;
+  font-size: 3rem;
+  transition: opacity .3s;
+  display: flex;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.character:hover .name {
+  opacity: 1;
+}
+
+.character-info {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-top: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.instructions-game {
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  display: flex;
+}
+
+.canvas-con {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+canvas {
+  border: 5px solid #fff;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=character_menu.34df27b5.css.map */

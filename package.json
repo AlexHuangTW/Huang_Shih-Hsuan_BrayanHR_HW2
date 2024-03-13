@@ -1,0 +1,16 @@
+{
+  "name": "huang_shih-hsuan_brayanhr_hw2",
+  "version": "1.0.0",
+  "description": "<h1 align =\"center\">OOP JS -MODULES AND BUNDLING - HW2</h1>",
+  "main": "index.js",
+  "scripts": {
+    "start" : "parcel src/character_menu.html",
+    "build" : "parcel build src/character_menu.html --public-url ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
